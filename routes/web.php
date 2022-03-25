@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DashBoardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/aa', function () {
       return view('admin.index');
 });
+
+Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
+Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name("clients");
+Route::get('/vehicules', [App\Http\Controllers\CarController::class, 'index'])->name("vehicules");
+/*Route::get('/assurances', [App\Http\Controllers\AssuranceController::class, 'index'])->name("clients");*/
