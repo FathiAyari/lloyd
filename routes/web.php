@@ -13,11 +13,10 @@ use App\Http\Controllers\DashBoardController;
 |
 */
 
-Route::get('/aa', function () {
-      return view('admin.index');
-});
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
 Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name("clients");
 Route::get('/vehicules', [App\Http\Controllers\CarController::class, 'index'])->name("vehicules");
+Route::get('/test', [App\Http\Controllers\testContrller::class, 'index']);
 /*Route::get('/assurances', [App\Http\Controllers\AssuranceController::class, 'index'])->name("clients");*/

@@ -150,17 +150,17 @@
                             <thead>
                             <tr>
 
-                                <th style="width: 25%"class="text-center">
+                                <th style="width: 20%"class="text-center">
                                     Nom et Prénom de client
                                 </th>
-                                <th style="width: 25%"class="text-center">
+                                <th style="width: 20%"class="text-center">
                                     Nationalité
                                 </th>
-                                <th style="width: 25%"class="text-center">
+                                <th style="width: 20%"class="text-center">
                                    Type
 
                                 </th>
-                                <th style="width: 25%" class="text-center">
+                                <th style="width: 40%" class="text-center">
                                     Options
 
                                 </th>
@@ -191,7 +191,7 @@
                                 </td>
 
                                 <td class="project-actions justify-content-center d-flex flex-row">
-
+                                    <button  data-toggle="modal" class="btn btn-success btn-sm m-1" data-target="#exampleModal"><i class="fa-solid fa-plus"></i> Ajouter voiture</button>
 
                                     <button  data-toggle="modal" class="btn btn-info btn-sm m-1" data-target="#exampleModal"><i class="fas fa-pencil-alt"></i> Modifier</button>
 
