@@ -37,7 +37,12 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
-            <a href="{{url('dashboard')}}" class="btn btn-success"> Connecter </a>
+            @if(Auth::check())
+                <a href="{{url('dashboard')}}" class="btn btn-success"> Taleau de bord </a>
+            @else     <a href="{{url('login')}}" class="btn btn-success"> Connecter </a>
+            @endif
+
+
         </div>
     </div>
 </nav>

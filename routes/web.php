@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashBoardController;
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +13,20 @@ use App\Http\Controllers\DashBoardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',function (){
+    return view('index');
+});
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
-Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name("clients");
-Route::get('/vehicules', [App\Http\Controllers\CarController::class, 'index'])->name("vehicules");
-Route::get('/test', [App\Http\Controllers\testContrller::class, 'index']);
-/*Route::get('/assurances', [App\Http\Controllers\AssuranceController::class, 'index'])->name("clients");*/
+Auth::routes();
+Route::resource('clients', ClientController::class);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// route -> name,url->path
+// les routes protegées avec une methode da'uthentification securisé
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
+
+    Route::get('/vehicules', [App\Http\Controllers\CarController::class, 'index'])->name("vehicules");
+    Route::get('/test', [App\Http\Controllers\testContrller::class, 'index']);
+});

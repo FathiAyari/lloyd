@@ -1,5 +1,4 @@
-@extends('layouts.master'){{--master--}}
-{{--
+@extends('layouts.master')
 @section('content')
     <div class="wrapper">
         <!-- fonction js -->
@@ -15,14 +14,22 @@
 
 
 
-        <div class="content-wrapper ">
-            <!-- Content Header (Page header) -->
-            <section class="content-header d-flex flex-row justify-content-center">
-                <p>Gestion de voitures </p>
 
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid  ">
+                    <div class="d-flex flex-row-reverse">
+
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fa-solid fa-plus"></i>Ajouter un client</button>
+
+                    </div>
+                </div><!-- /.container-fluid -->
             </section>
             <!-- Modal -->
-
+@include("admin.clients.add_client_modal")
+@include("admin.clients.edit_client")
             <!-- Main content -->
             <section class="content">
 
@@ -34,61 +41,69 @@
                             <thead>
                             <tr>
 
-                                <th style="width: 25%"class="text-center">
+                                <th style="width: 20%"class="text-center">
                                     Nom et Prénom de client
                                 </th>
-                                <th style="width: 25%"class="text-center">
+                                <th style="width: 20%"class="text-center">
                                     Nationalité
                                 </th>
-                                <th style="width: 25%"class="text-center">
-                                    Nombre totale de voitures
+                                <th style="width: 20%"class="text-center">
+                                   Type de client
 
                                 </th>
-                                <th style="width: 25%" class="text-center">
+                                <th style="width: 40%" class="text-center">
                                     Options
 
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-
-                            <tr>
-
-
-
-
-                                <td class="text-center">
-                                    aa
-
-                                </td>
+@foreach($clients as $client)
+    <tr>
 
 
 
 
-                                <td class="text-center">
-                                    aa
+        <td class="text-center">
+            {{$client->name}}
+            {{$client->lastname}}
 
-                                </td>
-                                <td class="project_progress text-center" >
-                                    aa
-
-                                </td>
-
-                                <td class="project-actions text-center">
+        </td>
 
 
 
 
+        <td class="text-center">
+            {{$client->nationality}}
 
-                                    <a class="btn btn-success btn-sm m-1" href="">
-                                        <i
-                                            class="fa-solid fa-plus">
-                                        </i>
-                                        Ajouter voiture
-                                    </a>
+        </td>
+        <td class="project_progress text-center" >
+            {{$client->type}}
 
-                                </td>
-                            </tr>
+        </td>
+
+        <td class="project-actions justify-content-center d-flex flex-row">
+            <button  data-toggle="modal" class="btn btn-success btn-sm m-1" data-target="#exampleModal"><i class="fa-solid fa-plus"></i> Ajouter voiture</button>
+
+            <button  data-toggle="modal" class="btn btn-info btn-sm m-1" data-target="#editClient"><i class="fas fa-pencil-alt"></i> Modifier</button>
+
+
+            <form action="{{ route('clients.destroy',$client) }}"method="POST">
+            @method('DELETE')
+            @csrf
+            <!-- pour des raison de securité -->
+                <button type="submit" class="btn btn-danger btn-sm m-1">
+                    <i class="fas fa-trash">
+                    </i>
+                    Supprimer
+                </button>
+            </form>
+
+
+        </td>
+    </tr>
+@endforeach
+
 
 
 
@@ -103,7 +118,6 @@
             </section>
             <!-- /.content -->
         </div>
-
         <!-- /.content-wrapper -->
 
 
@@ -126,4 +140,3 @@
     <script src="../../dist/js/demo.js"></script>
 
 @endsection
---}}

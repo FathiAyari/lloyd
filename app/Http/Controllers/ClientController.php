@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -11,9 +13,11 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return  view("admin.clients");
+        $clients=Client::orderBy('created_at')->get();
+        return  view("admin.clients.clients",compact('clients'));
     }
 
     /**
@@ -34,7 +38,10 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Client::create($request->all());
+
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -66,10 +73,20 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    /*public function update(Request $request,Client $client )//request yjo mel formulaire
     {
-        //
-    }
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'category_id'=>'required'
+        ]);
+        $client->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'category_id'=>$request->category_id
+        ]);
+        return redirect()->route('products.index');
+    }*/
 
     /**
      * Remove the specified resource from storage.
@@ -77,8 +94,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client  $client)
     {
-        //
+        $client->delete();
+        return redirect()->route('clients.index');
     }
 }

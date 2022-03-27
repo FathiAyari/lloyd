@@ -40,7 +40,7 @@
 
                 <li class="nav-item">
 
-                    <a href="{{route('clients')}}" class="nav-link">
+                    <a href="{{route('clients.index')}}" class="nav-link">
                         <i class="fa-solid fa-user-gear"></i>
                         <p>
                             List de client
@@ -74,6 +74,54 @@
                         <i class="fa fa-file-pdf"></i>
                         <p>Fiche de voiture</p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                             Options
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+          s
+                        <li class="nav-item ml-3">
+
+
+
+
+
+                            <a href="{{url('')}}" type="submit" class="btn btn-success btn-sm">
+                                <i class="fa fa-house-user"></i>
+
+                                Aller au site
+                            </a>
+                        </li>
+                        <li class="nav-item ml-3 mt-1">
+
+
+
+
+
+                            <form action="{{ route('logout') }}" method="POST">
+
+                            @csrf<!-- pour des raison de securité -->
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-arrow-right-from-bracket"></i>
+
+                                    Deconnecter
+                                </button>
+                            </form>
+<!--                            <a  class="nav-link">
+
+                                <p>Deconnecter</p>
+
+                            </a>-->
+                        </li>
+
+                    </ul>
                 </li>
 
             </ul>
