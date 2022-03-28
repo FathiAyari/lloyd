@@ -16,18 +16,28 @@ class ClientController extends Controller
 
     public function index()
     {
-        $clients=Client::orderBy('created_at')->get();
+        $clients=Client::orderBy('created_at')->paginate(3);
         return  view("admin.clients.clients",compact('clients'));
     }
 
+
+
+
+
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        $request->validate([
+            'search'=>'required',
+
+        ]);
+        $clients=Client::where("name","like",'%'.$request->search.'%')->orwhere("lastname","like",'%'.$request->search.'%')->paginate(3);
+        return  view("admin.clients.clients",compact('clients'));
     }
 
     /**

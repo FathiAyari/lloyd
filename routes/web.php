@@ -19,13 +19,14 @@ Route::get('/',function (){
 
 
 Auth::routes();
-Route::resource('clients', ClientController::class);
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 // route -> name,url->path
 // les routes protegées avec une methode da'uthentification securisé
 Route::group(['middleware' => 'auth'], function () {
-
+    Route::resource('clients', ClientController::class);
     Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
+    Route::get('/search', [App\Http\Controllers\ClientController::class, 'search'])->name("search");
 
     Route::get('/vehicules', [App\Http\Controllers\CarController::class, 'index'])->name("vehicules");
     Route::get('/test', [App\Http\Controllers\testContrller::class, 'index']);

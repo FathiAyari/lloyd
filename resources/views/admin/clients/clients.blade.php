@@ -19,22 +19,37 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid  ">
-                    <div class="d-flex flex-row-reverse">
 
+                    <div class="d-flex justify-content-between">
+                        <form action="{{route("search")}}"  method="GET" class="form-inline my-2 my-lg-0">
+
+                                @csrf
+
+                            <input class="form-control mr-sm-2" name="search" placeholder="Nom de client" aria-label="Search">
+
+                            <button   class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+                        </form>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i
                                 class="fa-solid fa-plus"></i>Ajouter un client</button>
 
+
                     </div>
+                    @error('search')
+                    <div class="alert alert-danger m-2" role="alert">
+                        {{$message}}
+                    </div>
+
+                    @enderror
                 </div><!-- /.container-fluid -->
             </section>
             <!-- Modal -->
 @include("admin.clients.add_client_modal")
-@include("admin.clients.edit_client")
+@include("admin.clients.edit_client_modal")
             <!-- Main content -->
             <section class="content">
 
                 <!-- Default box -->
-                <div class="card">
+                <div class="card  ">
 
                     <div class="card-body p-0">
                         <table class="table table-striped projects">
@@ -82,7 +97,8 @@
 
         </td>
 
-        <td class="project-actions justify-content-center d-flex flex-row">
+        <td class="project-actions justify-content-center d-flex ">
+
             <button  data-toggle="modal" class="btn btn-success btn-sm m-1" data-target="#exampleModal"><i class="fa-solid fa-plus"></i> Ajouter voiture</button>
 
             <button  data-toggle="modal" class="btn btn-info btn-sm m-1" data-target="#editClient"><i class="fas fa-pencil-alt"></i> Modifier</button>
@@ -110,6 +126,10 @@
 
                             </tbody>
                         </table>
+                       <div class="m-5  d-flex flex-row justify-content-center  ">
+                           <div>{{$clients->links()}} </div>
+
+                       </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
