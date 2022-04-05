@@ -11,19 +11,41 @@
             <div class="modal-body">
                 <form action="{{ route('clients.store') }}" method="POST">
                     @csrf
+
+
                     <div class="d-flex flex-row">
+
                         <div class="form-group p-1">
                             <label for="exampleInputEmail1">Nom</label>
-                            <input type="text" class="form-control" name="name"
+                            <input type="text" class="form-control" name="name" required
                                    aria-describedby="emailHelp">
 
                         </div>
+
+
                         <div class="form-group p-1">
                             <label for="exampleInputPassword1">Prénom</label>
                             <input type="text" class="form-control" name="lastname"
                             >
                         </div>
+
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                     <div class="form-check">
