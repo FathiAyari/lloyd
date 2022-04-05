@@ -3,13 +3,13 @@
     <div class="wrapper">
         <!-- fonction js -->
 
-        <script type="text/javascript">
+<!--        <script type="text/javascript">
             window.setTimeout(function() {
                 $(".alert").fadeTo(500, 0).slideD(500, function() {
                     $(this).hide();
                 });
             }, 2500);
-        </script>
+        </script>-->
 
 
 
@@ -34,8 +34,15 @@
 
 
                     </div>
+
+
+
+
+
+
+
                     @error('search')
-                    <div class="alert alert-danger m-2" role="alert">
+                    <div class="alert alert-danger  m-1 col-3" role="alert">
                         {{$message}}
                     </div>
 
@@ -44,7 +51,7 @@
             </section>
             <!-- Modal -->
 @include("admin.clients.add_client_modal")
-@include("admin.clients.edit_client_modal")
+        <!-- heritage de modale de l'ajout de client -->
             <!-- Main content -->
             <section class="content">
 
@@ -73,8 +80,12 @@
                             </tr>
                             </thead>
                             <tbody>
-@foreach($clients as $client)
-    <tr>
+                @foreach($clients as $client)
+
+
+
+
+               <tr>
 
 
 
@@ -92,6 +103,8 @@
             {{$client->nationality}}
 
         </td>
+
+
         <td class="project_progress text-center" >
             {{$client->type}}
 
@@ -101,7 +114,8 @@
 
             <button  data-toggle="modal" class="btn btn-success btn-sm m-1" data-target="#exampleModal"><i class="fa-solid fa-plus"></i> Ajouter voiture</button>
 
-            <button  data-toggle="modal" class="btn btn-info btn-sm m-1" data-target="#editClient"><i class="fas fa-pencil-alt"></i> Modifier</button>
+            <a href="{{route("clients.edit",$client)}}" class="btn btn-info btn-sm m-1" ><i class="fas fa-pencil-alt"></i> Modifier</a>
+            <a href="{{route("clients.show",$client)}}" class="btn btn-primary btn-sm m-1"><i class="fa-solid fa-eye"></i>Voir</a>
 
 
             <form action="{{ route('clients.destroy',$client) }}"method="POST">
@@ -118,7 +132,10 @@
 
         </td>
     </tr>
-@endforeach
+
+
+
+                @endforeach
 
 
 
@@ -148,15 +165,6 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
 
 @endsection

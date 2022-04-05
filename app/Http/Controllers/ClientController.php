@@ -16,9 +16,12 @@ class ClientController extends Controller
 
     public function index()
     {
-        $clients=Client::orderBy('created_at')->paginate(3);
+        $clients=Client::orderBy('created_at')->paginate(10);
         return  view("admin.clients.clients",compact('clients'));
+
     }
+
+
 
 
 
@@ -36,7 +39,10 @@ class ClientController extends Controller
             'search'=>'required',
 
         ]);
-        $clients=Client::where("name","like",'%'.$request->search.'%')->orwhere("lastname","like",'%'.$request->search.'%')->paginate(3);
+        /* %mou%
+         * mouhamed
+         * */
+        $clients=Client::where("name","like",'%'.$request->search.'%')->orwhere("lastname","like",'%'.$request->search.'%')->paginate(10);
         return  view("admin.clients.clients",compact('clients'));
     }
 
@@ -48,10 +54,20 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-
-        Client::create($request->all());
+        $request->validate([// fonction de validation pour le contenu de requete http Request $request
+            'name'=>'required',
+            'lastname'=>'required',
+            'nationality'=>'required',
+            'ville'=>'required',
+            'zip'=>'required',
+            'document_type'=>'required',
+            'type'=>'required',
+            'document_number'=>'required',
+        ]);
+        Client::create($request->all());//creer un objet de la classe client
 
         return redirect()->route('clients.index');
+
     }
 
     /**
@@ -60,9 +76,10 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        //
+
+        return view("admin.clients.client_details",compact('client'));
     }
 
     /**
@@ -71,9 +88,10 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-        //
+
+        return view("admin.clients.edit_client",compact("client"));// redirection et compact d l'utilisateur courant
     }
 
     /**
@@ -83,20 +101,31 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function update(Request $request,Client $client )//request yjo mel formulaire
+    public function update(Request $request,Client $client )//request yjo mel formulaire
     {
-        $request->validate([
+        $request->validate([// fonction de validation pour le contenu de requete http Request $request
             'name'=>'required',
-            'description'=>'required',
-            'category_id'=>'required'
+            'lastname'=>'required',
+            'nationality'=>'required',
+            'ville'=>'required',
+            'zip'=>'required',
+            'document_type'=>'required',
+            'type'=>'required',
+            'document_number'=>'required',
         ]);
+  /*      {"name":"value"}*/
         $client->update([
             'name'=>$request->name,
-            'description'=>$request->description,
-            'category_id'=>$request->category_id
+            'lastname'=>$request->lastname,
+            'nationality'=>$request->nationality,
+            'ville'=>$request->ville,
+            'zip'=>$request->zip,
+            'type'=>$request->type,
+            'document_type'=>$request->document_type,
+            'document_number'=>$request->document_number,
         ]);
-        return redirect()->route('products.index');
-    }*/
+        return redirect()->route('clients.index');
+    }
 
     /**
      * Remove the specified resource from storage.
