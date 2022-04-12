@@ -13,7 +13,7 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public  function  index(){
-        return view("admin.cars");
+        return view("admin.cars.index");
     }
 
     /**

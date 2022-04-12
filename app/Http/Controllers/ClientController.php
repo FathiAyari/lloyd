@@ -16,6 +16,8 @@ class ClientController extends Controller
 
     public function index()
     {
+
+
         $clients=Client::orderBy('created_at')->paginate(10);
         return  view("admin.clients.clients",compact('clients'));
 
@@ -66,7 +68,7 @@ class ClientController extends Controller
         ]);
         Client::create($request->all());//creer un objet de la classe client
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with("success","Client " . strtoupper( $request->lastname) . " ".ucfirst(  $request->name)."  a été ajouté(e) avec succès");
 
     }
 
@@ -124,7 +126,8 @@ class ClientController extends Controller
             'document_type'=>$request->document_type,
             'document_number'=>$request->document_number,
         ]);
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with("update","Client " . strtoupper( $client->lastname) . " ".ucfirst(  $client->name)."  a été modifié(e) avec succès.");;
+
     }
 
     /**
@@ -136,6 +139,6 @@ class ClientController extends Controller
     public function destroy(Client  $client)
     {
         $client->delete();
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with("delete","Client " . strtoupper( $client->lastname) . " ".ucfirst(  $client->name)."  a été supprimé(e).");
     }
 }

@@ -83,7 +83,7 @@
                                         <i
                                             class="fa-solid fa-plus">
                                         </i>
-                                        Ajouter voiture
+                                        Ajouter un assurance
                                     </a>
 
                                 </td>

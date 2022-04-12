@@ -21,16 +21,7 @@
         </div>
 
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -73,6 +64,13 @@
                     <a href="#" class="nav-link">
                         <i class="fa fa-file-pdf"></i>
                         <p>Fiche de voiture</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+
+                    <a href="{{route("messages.index")}}" class="nav-link">
+                        <i class="fa fa-message"></i>
+                        <p>Message</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -123,6 +121,7 @@
 
                     </ul>
                 </li>
+
 
             </ul>
         </nav>

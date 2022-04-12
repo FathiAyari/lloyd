@@ -3,22 +3,27 @@
     <div class="wrapper">
         <!-- fonction js -->
 
-<!--        <script type="text/javascript">
-            window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideD(500, function() {
-                    $(this).hide();
-                });
-            }, 2500);
-        </script>-->
-
 
 
 
 
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
+            <section class="content-header d-flex flex-row justify-content-center">
+                <p>Gestion de clients </p>
+
+            </section>
             <section class="content-header">
                 <div class="container-fluid  ">
+                    @if($message=Session::get('success'))
+                        <div class="alert alert-success" role="alert">{{ $message }}</div>
+                    @endif
+                    @if($message=Session::get('delete'))
+                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                    @endif
+                    @if($message=Session::get('update'))
+                        <div class="alert alert-info" role="alert">{{ $message }}</div>
+                    @endif
 
                     <div class="d-flex justify-content-between">
                         <form action="{{route("search")}}"  method="GET" class="form-inline my-2 my-lg-0">
