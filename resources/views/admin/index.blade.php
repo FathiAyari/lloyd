@@ -1,129 +1,74 @@
-@extends('layouts.master'){{--master--}}
-{{--
+
+@extends('layouts.master')
+
+
 @section('content')
     <div class="wrapper">
-        <!-- fonction js -->
+        <div class="d-flex flex-column my-5 ">
+            <div class="row justify-content-center">
+                <div class="col-2">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
 
-        <script type="text/javascript">
-            window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideD(500, function() {
-                    $(this).hide();
-                });
-            }, 2500);
-        </script>
+                            <h3>{{$clients->count()}}</h3>
 
-
-
-
-        <div class="content-wrapper ">
-            <!-- Content Header (Page header) -->
-            <section class="content-header d-flex flex-row justify-content-center">
-                <p>Gestion de voitures </p>
-
-            </section>
-            <!-- Modal -->
-
-            <!-- Main content -->
-            <section class="content">
-
-                <!-- Default box -->
-                <div class="card">
-
-                    <div class="card-body p-0">
-                        <table class="table table-striped projects">
-                            <thead>
-                            <tr>
-
-                                <th style="width: 25%"class="text-center">
-                                    Nom et Prénom de client
-                                </th>
-                                <th style="width: 25%"class="text-center">
-                                    Nationalité
-                                </th>
-                                <th style="width: 25%"class="text-center">
-                                    Nombre totale de voitures
-
-                                </th>
-                                <th style="width: 25%" class="text-center">
-                                    Options
-
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            <tr>
-
-
-
-
-                                <td class="text-center">
-                                    aa
-
-                                </td>
-
-
-
-
-                                <td class="text-center">
-                                    aa
-
-                                </td>
-                                <td class="project_progress text-center" >
-                                    aa
-
-                                </td>
-
-                                <td class="project-actions text-center">
-
-
-
-
-
-                                    <a class="btn btn-success btn-sm m-1" href="">
-                                        <i
-                                            class="fa-solid fa-plus">
-                                        </i>
-                                        Ajouter voiture
-                                    </a>
-
-                                </td>
-                            </tr>
-
-
-
-
-                            </tbody>
-                        </table>
+                            <p>Clients</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <a href="{{route('clients.index')}}" class="small-box-footer">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
+                <!-- ./col -->
+                <div class="col-2">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{$cars->count()}}</h3>
 
-            </section>
-            <!-- /.content -->
+                            <p>Vehicules</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-car"></i>
+                        </div>
+                        <a href="{{route('cars.index')}}" class="small-box-footer">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-2">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{$assurance->count()}}</h3>
+
+                            <p>Contrats</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-file-signature"></i>
+                        </div>
+                        <a href="{{route('assurances.index')}}" class="small-box-footer">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-2">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{$messages->count()}}</h3>
+
+                            <p>Messages</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-message"></i>
+                        </div>
+                        <a href="{{route('messages.index')}}" class="small-box-footer">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- /.content-wrapper -->
-
-
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
 
 @endsection
---}}

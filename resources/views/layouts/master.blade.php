@@ -48,7 +48,7 @@
 
         @include('includes.navbar')
         @include('includes.sidebar')
-        @yield('content'){{--contenue dynamique--}}
+        @yield('content')
         @include('includes.footer')
     </div>
 
@@ -100,16 +100,13 @@
     </script>
 
     <script type="text/javascript">
-        function hideAnimation() {
-            /*class -> .
-            * id -> #
-            * */
+        window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideD(500, function() {
                 $(this).hide();
             });
-        }
-        window.setTimeout(hideAnimation(), 2500);
+        }, 2500);
     </script>
+
 
 
 </body>

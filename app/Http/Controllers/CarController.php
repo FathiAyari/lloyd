@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public  function  index(){
-        return view("admin.cars.index");
+        $cars=Car::orderBy('created_at','desc')->paginate(10);
+        return view("admin.cars.index",compact('cars'));
     }
 
     /**
@@ -23,7 +25,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $id = \request('id');// recuperation de la valeur de variable id de l'url
+            return  view('admin.cars.create_car', compact('id'));
     }
 
     /**
@@ -34,11 +37,11 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
+return  $request;
 
-        ]);
-        Client::create($request->all());
+        Car::create($request->all());
+        return redirect()->route('cars.index')->with("success","Vehicule ajouté avec succès");
+
     }
 
     /**

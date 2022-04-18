@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AssuranceController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
@@ -28,10 +30,12 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('clients', ClientController::class);
     Route::resource('messages', MessageController::class);
+    Route::resource('cars', CarController::class);
+    Route::resource('assurances', AssuranceController::class);
     Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
     Route::get('/search', [App\Http\Controllers\ClientController::class, 'search'])->name("search");
     Route::get('/clients/details', [App\Http\Controllers\ClientController::class, 'details'])->name("details");
 
-    Route::get('/vehicules', [App\Http\Controllers\CarController::class, 'index'])->name("vehicules");
-    Route::get('/test', [App\Http\Controllers\testContrller::class, 'index']);
+
+
 });

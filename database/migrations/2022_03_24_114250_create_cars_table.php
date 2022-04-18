@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string("registration");
             $table->string("brand");
             $table->string("energy");
+
+
+
             $table->string("frame");//chassis en englais
             $table->string("power");//puissance
             $table->string("places");

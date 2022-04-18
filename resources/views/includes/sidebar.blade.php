@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item">
 
-                    <a href="{{route('vehicules')}}" class="nav-link">
+                    <a href="{{route('cars.index')}}" class="nav-link">
                         <i class="fa-solid fa-car-tunnel"></i>
                         <p>
                             List de voitures
@@ -51,7 +51,7 @@
                 </li>
                 <li class="nav-item">
 
-                    <a href="#" class="nav-link">
+                    <a href="{{route("assurances.index")}}" class="nav-link">
                         <i class="fa fa-user-shield"></i>
                         <p>
 
@@ -59,13 +59,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
 
-                    <a href="#" class="nav-link">
-                        <i class="fa fa-file-pdf"></i>
-                        <p>Fiche de voiture</p>
-                    </a>
-                </li>
                 <li class="nav-item">
 
                     <a href="{{route("messages.index")}}" class="nav-link">

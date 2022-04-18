@@ -1,32 +1,23 @@
 @extends('layouts.master')
-@section('content')
+@section('content')@include("admin.clients.add_client_modal")
     <div class="wrapper">
         <!-- fonction js -->
 
-        <script type="text/javascript">
-            window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideD(500, function() {
-                    $(this).hide();
-                });
-            }, 2500);
-        </script>
 
 
 
 
-        <div class="content-wrapper ">
-            <!-- Content Header (Page header) -->
+        <div class="content-wrapper">
             <section class="content-header d-flex flex-row justify-content-center">
                 <p>Gestion de voitures </p>
 
             </section>
-            <!-- Modal -->
-
-            <!-- Main content -->
             <section class="content">
-
+                @if($message=Session::get('success'))
+                    <div class="alert alert-success" role="alert">{{ $message }}</div>
+            @endif
                 <!-- Default box -->
-                <div class="card">
+                <div class="card  ">
 
                     <div class="card-body p-0">
                         <table class="table table-striped projects">
@@ -40,7 +31,7 @@
                                     Nationalité
                                 </th>
                                 <th style="width: 25%"class="text-center">
-                                    Nombre totale de voitures
+                                    Immatricule
 
                                 </th>
                                 <th style="width: 25%" class="text-center">
@@ -51,49 +42,56 @@
                             </thead>
                             <tbody>
 
-                            <tr>
+                            @foreach($cars as $car)
+                                <tr>
 
 
 
 
-                                <td class="text-center">
-                                    aa
+                                    <td class="text-center">
+                                        {{$car->client->name}}
+                                        {{$car->client->lastname}}
 
-                                </td>
-
-
-
-
-                                <td class="text-center">
-                                    aa
-
-                                </td>
-                                <td class="project_progress text-center" >
-                                    aa
-
-                                </td>
-
-                                <td class="project-actions text-center">
+                                    </td>
 
 
 
 
+                                    <td class="text-center">
+                                        {{$car->client->nationality}}
 
-                                    <a class="btn btn-success btn-sm m-1" href="">
-                                        <i
-                                            class="fa-solid fa-plus">
-                                        </i>
-                                        Ajouter un assurance
-                                    </a>
+                                    </td>
+                                    <td class="project_progress text-center" >
+                                        {{$car->registration}}
 
-                                </td>
-                            </tr>
+                                    </td>
+
+                                    <td class="project-actions text-center">
+
+
+
+
+
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i
+                                                class="fa-solid fa-plus"></i>Ajouter un garantie</button>
+
+                                    </td>
+                                </tr>
+                            @endforeach
 
 
 
 
                             </tbody>
                         </table>
+                        <div class="m-5  d-flex flex-row justify-content-center  ">
+                            <div>{{$cars->links()}} </div>
+
+                        </div>
+                        <div class="m-5  d-flex flex-row justify-content-center  ">
+
+
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -102,7 +100,6 @@
             </section>
             <!-- /.content -->
         </div>
-
         <!-- /.content-wrapper -->
 
 
@@ -113,15 +110,6 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
 
 @endsection

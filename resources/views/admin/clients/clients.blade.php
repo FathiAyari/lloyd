@@ -117,7 +117,7 @@
 
         <td class="project-actions justify-content-center d-flex ">
 
-            <button  data-toggle="modal" class="btn btn-success btn-sm m-1" data-target="#exampleModal"><i class="fa-solid fa-plus"></i> Ajouter voiture</button>
+            <a href="{{route("cars.create",['id' => $client->id])}} "class=" btn btn-success"> Ajouter une voiture </a>
 
             <a href="{{route("clients.edit",$client)}}" class="btn btn-info btn-sm m-1" ><i class="fas fa-pencil-alt"></i> Modifier</a>
             <a href="{{route("clients.show",$client)}}" class="btn btn-primary btn-sm m-1"><i class="fa-solid fa-eye"></i>Voir</a>

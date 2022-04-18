@@ -1,13 +1,6 @@
 @extends('layouts.master')
 @section('content')
     <div class="wrapper">
-        <!-- fonction js -->
-
-
-
-
-
-
 
         <div class="content-wrapper  ">
             <div class="m-5  d-flex flex-column  align-items-center">
@@ -65,4 +58,5 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
+
 @endsection
