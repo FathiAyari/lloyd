@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <section class="content-header d-flex flex-row justify-content-center">
+            <section class="d-flex flex-row justify-content-center">
                 <p>Histouriques </p>
 
             </section>
