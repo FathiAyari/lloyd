@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assurances', function (Blueprint $table) {
+        Schema::create('historiques', function (Blueprint $table) {
             $table->id();
-            $table->json("legale");
-            $table->json("optional");
-            $table->json("persons");
+            $table->string("subject");
+            $table->string("type");
 
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assurances');
+        Schema::dropIfExists('historiques');
     }
 };

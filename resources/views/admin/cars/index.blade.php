@@ -72,8 +72,7 @@
 
 
 
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i
-                                                class="fa-solid fa-plus"></i>Ajouter un garantie</button>
+                                        <a href="{{route('garantie.create')}}" class="btn btn-success">Ajouter un garantie</a>
 
                                     </td>
                                 </tr>

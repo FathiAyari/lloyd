@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('clients', ClientController::class);
     Route::resource('messages', MessageController::class);
     Route::resource('cars', CarController::class);
-    Route::resource('assurances', AssuranceController::class);
+    Route::resource('garantie', AssuranceController::class);
     Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
     Route::get('/search', [App\Http\Controllers\ClientController::class, 'search'])->name("search");
     Route::get('/clients/details', [App\Http\Controllers\ClientController::class, 'details'])->name("details");

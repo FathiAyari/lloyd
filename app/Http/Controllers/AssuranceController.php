@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assurance;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isNull;
 
 class AssuranceController extends Controller
 {
@@ -23,7 +25,7 @@ class AssuranceController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.garantie.create_garantie");
     }
 
     /**
@@ -34,7 +36,20 @@ class AssuranceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+$optional=$request->optional;
+        if(is_null($optional)){
+            $optional=[];
+        }
+        $persons=$request->persons;
+        if(is_null($persons)){
+            $persons=[];
+        }
+        Assurance::create([
+            'legale'=>["Réesponsabilité  Civile-Recours Tiers Incendie"],
+            'optional'=>$optional,
+            'persons'=>$persons,
+        ]);
+       return Assurance::all();
     }
 
     /**
