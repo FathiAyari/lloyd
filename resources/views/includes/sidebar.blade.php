@@ -51,7 +51,7 @@
                 </li>
                 <li class="nav-item">
 
-                    <a href="{{route("assurances.index")}}" class="nav-link">
+                    <a href="{{route("garantie.index")}}" class="nav-link">
                         <i class="fa fa-user-shield"></i>
                         <p>
 

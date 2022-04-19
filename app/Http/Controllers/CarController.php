@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Client;
+use App\Models\Historique;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -37,9 +38,16 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-return  $request;
+
 
         Car::create($request->all());
+        Historique::create([
+
+            'subject'=>"vous avez ajouté une voiture a ".$request->client_id,
+            'type'=>"success",
+
+
+        ]);
         return redirect()->route('cars.index')->with("success","Vehicule ajouté avec succès");
 
     }

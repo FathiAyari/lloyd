@@ -48,7 +48,7 @@
                         <div class="icon">
                             <i class="fa fa-file-signature"></i>
                         </div>
-                        <a href="{{route('assurances.index')}}" class="small-box-footer">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('garantie.index')}}" class="small-box-footer">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -67,6 +67,70 @@
                     </div>
                 </div>
             </div>
+            <section class="content-header d-flex flex-row justify-content-center">
+                <p>Histouriques </p>
+
+            </section>
+           <div class="d-flex flex-row justify-content-center">
+               <div class="card col-6 ">
+
+                   <table class="table table-striped projects">
+                       <thead>
+                       <tr>
+
+                           <th style="width: 20%"class="text-center">
+                               date de l' operation
+                           </th>
+                           <th style="width: 20%"class="text-center">
+                               sujet
+                           </th>
+
+                       </tr>
+                       </thead>
+                       <tbody>
+                       @foreach($historiques as $historique)
+
+
+
+
+                           <tr class="bg-{{$historique->type}} bg-opacity-75" >
+
+
+
+
+                               <td class="text-center">
+
+                                   {{$historique->created_at}}
+                               </td>
+
+
+
+
+                               <td class="text-center">
+                                   {{$historique->subject}}
+
+                               </td>
+
+
+
+                           </tr>
+
+
+
+                       @endforeach
+
+
+
+
+
+                       </tbody>
+                   </table>
+                   <div class="m-5  d-flex flex-row justify-content-center  ">
+                       <div>{{$historiques->links()}} </div>
+
+                   </div>
+               </div>
+           </div>
         </div>
     </div>
 

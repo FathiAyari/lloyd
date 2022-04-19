@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('assurances', function (Blueprint $table) {
             $table->id();
+            $table->json("legale");
+            $table->json("optional");
+            $table->json("persons");
+
             $table->timestamps();
         });
     }

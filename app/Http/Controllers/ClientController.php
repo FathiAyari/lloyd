@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Historique;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -41,9 +42,7 @@ class ClientController extends Controller
             'search'=>'required',
 
         ]);
-        /* %mou%
-         * mouhamed
-         * */
+
         $clients=Client::where("name","like",'%'.$request->search.'%')->orwhere("lastname","like",'%'.$request->search.'%')->paginate(10);
         return  view("admin.clients.clients",compact('clients'));
     }
@@ -67,6 +66,13 @@ class ClientController extends Controller
             'document_number'=>'required',
         ]);
         Client::create($request->all());//creer un objet de la classe client
+        $historique=Historique::create([
+
+            'subject'=>"voua avez ajouté le client ".$request->name . " " . $request->lastname,
+            'type'=>"success",
+
+
+        ]);
 
         return redirect()->route('clients.index')->with("success","Client " . strtoupper( $request->lastname) . " ".ucfirst(  $request->name)."  a été ajouté(e) avec succès");
 
@@ -126,6 +132,12 @@ class ClientController extends Controller
             'document_type'=>$request->document_type,
             'document_number'=>$request->document_number,
         ]);
+        $historique=Historique::create([
+
+            'subject'=>"vous avez modifié  le client ".$request->name . " " . $request->lastname,'type'=>"info",
+
+
+        ]);
         return redirect()->route('clients.index')->with("update","Client " . strtoupper( $client->lastname) . " ".ucfirst(  $client->name)."  a été modifié(e) avec succès.");;
 
     }
@@ -139,6 +151,12 @@ class ClientController extends Controller
     public function destroy(Client  $client)
     {
         $client->delete();
+        $historique=Historique::create([
+
+            'subject'=>"voua avez supprimé le client ".$client->name . " " . $client->lastname . " avec tous ces vehicules", 'type'=>"danger",
+
+
+        ]);
         return redirect()->route('clients.index')->with("delete","Client " . strtoupper( $client->lastname) . " ".ucfirst(  $client->name)."  a été supprimé(e).");
     }
 }
