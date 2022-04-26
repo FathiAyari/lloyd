@@ -68,7 +68,7 @@ class ClientController extends Controller
         Client::create($request->all());//creer un objet de la classe client
         $historique=Historique::create([
 
-            'subject'=>"voua avez ajouté le client ".$request->name . " " . $request->lastname,
+            'subject'=>"vous avez ajouté le client ".$request->name . " " . $request->lastname,
             'type'=>"success",
 
 
@@ -134,7 +134,8 @@ class ClientController extends Controller
         ]);
         $historique=Historique::create([
 
-            'subject'=>"vous avez modifié  le client ".$request->name . " " . $request->lastname,'type'=>"info",
+            'subject'=>"vous avez modifié  le client ".$request->name . " " . $request->lastname,
+            'type'=>"info",
 
 
         ]);
@@ -153,7 +154,8 @@ class ClientController extends Controller
         $client->delete();
         $historique=Historique::create([
 
-            'subject'=>"voua avez supprimé le client ".$client->name . " " . $client->lastname . " avec tous ces vehicules", 'type'=>"danger",
+            'subject'=>"vous avez supprimé le client ".$client->name . " " . $client->lastname . " avec tous ces vehicules",
+            'type'=>"danger",
 
 
         ]);

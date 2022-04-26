@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->string("type");
+            $table->boolean("granted")->default(false);
             $table->string("usage");
             $table->string("registration_type");
             $table->string("registration");

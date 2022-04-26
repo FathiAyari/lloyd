@@ -43,7 +43,7 @@ class CarController extends Controller
         Car::create($request->all());
         Historique::create([
 
-            'subject'=>"vous avez ajouté une voiture a ".$request->client_id,
+            'subject'=>"vous avez ajouté une voiture ".$request->registration,
             'type'=>"success",
 
 

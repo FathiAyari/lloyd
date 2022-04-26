@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assurance;
+use App\Models\Car;
+use App\Models\Historique;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\isNull;
+use Carbon\Carbon;
 
 class AssuranceController extends Controller
 {
@@ -15,7 +18,8 @@ class AssuranceController extends Controller
      */
     public function index()
     {
-        return  view("admin.garantie.index");
+        $assurances=Assurance::all();
+        return  view("admin.garantie.index",compact('assurances'));
     }
 
     /**
@@ -25,7 +29,8 @@ class AssuranceController extends Controller
      */
     public function create()
     {
-        return view("admin.garantie.create_garantie");
+        $id = \request('id');
+        return view("admin.garantie.create_garantie",compact("id"));
     }
 
     /**
@@ -44,12 +49,30 @@ $optional=$request->optional;
         if(is_null($persons)){
             $persons=[];
         }
+        $debut =Carbon::now();
+        $fin =$debut->addMonths(1);
         Assurance::create([
             'legale'=>["Réesponsabilité  Civile-Recours Tiers Incendie"],
             'optional'=>$optional,
             'persons'=>$persons,
+            'car_id'=>$request->car_id,
+            'fractionnement'=>$request->fractionnement,
+            'debut'=>Carbon::now(),
+            'fin'=>Carbon::now()->addMonths($request->fractionnement),
         ]);
-       return Assurance::all();
+
+
+$car=Car::where('id',$request->car_id)->first()->update(['granted'=>true]);
+
+        Historique::create([
+
+            'subject'=>"vous avez ajouté un garantie ",
+            'type'=>"success",
+
+
+        ]);
+        return redirect()->route('garantie.index')->with("success","garantie  ajouté avec succès");
+
     }
 
     /**

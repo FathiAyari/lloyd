@@ -16,7 +16,7 @@
                 <img src="{{asset('dist/img/avatar3.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-<p class="text-light">Feryel LIMEM</p>
+<p class="text-light">{{ Auth::user()->name }}</p>
             </div>
         </div>
 

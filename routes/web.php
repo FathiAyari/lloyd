@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssuranceController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashBoardController;
@@ -35,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name("dashboard");
     Route::get('/search', [App\Http\Controllers\ClientController::class, 'search'])->name("search");
     Route::get('/clients/details', [App\Http\Controllers\ClientController::class, 'details'])->name("details");
+    Route::get('/pdf', [PdfController::class, 'generatePdf'])->name("pdf");
 
 
 

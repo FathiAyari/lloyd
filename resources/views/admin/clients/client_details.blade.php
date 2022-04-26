@@ -19,6 +19,10 @@
                     <di class="font-weight-bold">Nom et prénom : </di>
                     <di class="  ">{{$client->name}} {{$client->lastname}}</di>
                 </div>
+                <div class="d-flex flex-row p-3 ">
+                    <di class="font-weight-bold">Numéro portable : </di>
+                    <di class="  ">{{$client->gsm}}</di>
+                </div>
                 <div class="d-flex flex-row p-3">
                     <di class="font-weight-bold">Nationalité : </di>
                     <di class=""> {{$client->nationality}}</di>

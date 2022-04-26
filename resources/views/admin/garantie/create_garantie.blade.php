@@ -14,17 +14,19 @@
                        <div class="d-flex flex-column">
 
                            <div class="d-flex flex-column">
-                               <p>Garantie Legale</p>
+                             <h2 class="px-3">Garantie Legale</h2>
                                <div class="form-check">
 
-                                   <input class="form-check-input" type="checkbox" value="Réesponsabilité  Civile-Recours Tiers Incendie" name="legale[]"  checked="checked"  disabled>
+                                       <input class="form-check-input" type="checkbox" value="Réesponsabilité  Civile-Recours Tiers Incendie" name="legale[]"  checked="checked"  disabled>
                                    <label class="form-check-label" for="flexCheckDefault">
                                       Réesponsabilité  Civile-Recours Tiers Incendie
                                    </label>
                                </div>
                            </div>
+                           <input type="hidden"  name="car_id" value="{{$id}}">
                            <div class="d-flex flex-column">
-                               <p>Garantie Facultative : </p>
+
+                               <h2 class="px-3">Garantie Facultative</h2>
                                <div class="form-check">
                                    <input class="form-check-input" type="checkbox" value="Défense et recours" name="optional[]" >
                                    <label class="form-check-label" for="flexCheckDefault">
@@ -69,7 +71,7 @@
                                </div>
                            </div>
                            <div class="d-flex flex-column">
-                               <p>Assurances de personnes  : </p>
+                               <h2 class="px-3">Assurances de personnes</h2>
                                <div class="form-check">
                                    <input class="form-check-input" type="checkbox" value="Personnes Transportérs" name="persons[]" >
                                    <label class="form-check-label" for="flexCheckDefault">
@@ -84,6 +86,16 @@
                                </div>
 
                            </div>
+                           <div class="d-flex flex-column">
+                               <h2 class="px-3">Type de fractionnement</h2>
+                               <select class="form-select" aria-label="Default select example" name="fractionnement">
+
+                                   <option value="3">Trimestre</option>
+                                   <option value="6">Semestre</option>
+
+                               </select>
+
+                           </div>
 
 
 
@@ -94,7 +106,7 @@
                    </div>
 
                </div>
-                <div class="d-flex flex-row justify-content-center  ">
+                <div class="d-flex flex-row justify-content-center  py-2">
                     <button  type="submit" class="btn btn-success col-1 "> Ajouter </button>
                 </div>
             </form>

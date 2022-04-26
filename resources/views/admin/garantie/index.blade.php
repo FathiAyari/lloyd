@@ -13,7 +13,9 @@
 
         </section>
         <section class="content">
-
+            @if($message=Session::get('success'))
+                <div class="alert alert-success" role="alert">{{ $message }}</div>
+        @endif
             <!-- Default box -->
             <div class="card  ">
 
@@ -23,11 +25,9 @@
                         <tr>
 
                             <th style="width: 25%"class="text-center">
-                                Nom et Prénom de client
+                                Date de creation
                             </th>
-                            <th style="width: 25%"class="text-center">
-                                Nationalité
-                            </th>
+
                             <th style="width: 25%"class="text-center">
                                 Immatricule
 
@@ -40,39 +40,35 @@
                         </thead>
                         <tbody>
 
-                        <tr>
+                   @foreach($assurances as $assurance)
+                       <tr>
 
 
 
 
-                            <td class="text-center">
-                                aa
+                           <td class="text-center">
+                               {{$assurance->created_at}}
 
-                            </td>
-
-
-
-
-                            <td class="text-center">
-                                aa
-
-                            </td>
-                            <td class="project_progress text-center" >
-                                aa
-
-                            </td>
-
-                            <td class="project-actions text-center">
+                           </td>
 
 
 
 
+                           <td class="text-center">
+                               {{$assurance->car->registration}}
 
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i
-                                        class="fa-solid fa-plus"></i>Telecharger le fichier</button>
+                           </td>
 
-                            </td>
-                        </tr>
+
+                           <td class="project-actions text-center">
+
+
+                               <a href="{{route("pdf",['id' => $assurance->id])}}" class="btn btn-primary">   <i class="fa fa-download"></i>Telecharger le fichier</a>
+
+
+                           </td>
+                       </tr>
+                   @endforeach
 
 
 

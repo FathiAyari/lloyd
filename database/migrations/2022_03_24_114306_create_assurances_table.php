@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('assurances', function (Blueprint $table) {
             $table->id();
-            $table->json("legale");
+            $table->foreignId('car_id')->constrained()->onDelete('cascade');
+
+            $table->json("legale")->nullable();
+            $table->integer("fractionnement");
+            $table->date("debut");
+            $table->date("fin");
             $table->json("optional");
             $table->json("persons");
 

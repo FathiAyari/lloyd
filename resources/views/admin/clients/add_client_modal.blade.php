@@ -47,7 +47,11 @@
 
 
 
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Numméro portable</label>
+                        <input type="number" class="form-control" name="gsm">
 
+                    </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" value="Homme" name="sexe" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">

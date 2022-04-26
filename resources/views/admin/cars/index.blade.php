@@ -72,7 +72,13 @@
 
 
 
-                                        <a href="{{route('garantie.create')}}" class="btn btn-success">Ajouter un garantie</a>
+                                     @if($car->granted==0)
+                                            <a href="{{route('garantie.create',['id' => $car->id])}}" class="btn bg-danger bg-opacity-75"><i class="fa fa-triangle-exclamation"></i> ajouter un garantie</a>
+
+                                        @else
+                                            <button class="btn btn-success"><i class="fa fa-check"></i></button>
+                                        @endif
+
 
                                     </td>
                                 </tr>
