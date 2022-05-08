@@ -92,8 +92,16 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Car  $car)
     {
-        //
+        $car->delete();
+        $historique=Historique::create([
+
+            'subject'=>"vous avez supprimé la voiture ".$car->regisration,
+            'type'=>"danger",
+
+
+        ]);
+        return redirect()->route('cars.index')->with("delete","Voiture  a été supprimé(e).");
     }
 }

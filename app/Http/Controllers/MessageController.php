@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Historique;
 use App\Models\MessageModel;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,9 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {return view("admin.messages.messages");
+    {
+        $messages=MessageModel::all();
+        return view("admin.messages.messages",compact("messages"));
     }
 
     /**
@@ -35,6 +38,14 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         MessageModel::create($request->all());
+        $historique=Historique::create([
+
+            'subject'=>"vous avez recu un message . ",
+            'type'=>"success",
+
+
+        ]);
+        return redirect()->route('home.index')->with("success","vous avez envoyé un message .");
 
     }
 
@@ -78,8 +89,18 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MessageModel $message)
     {
-        //
+        $message->delete();
+
+        $historique=Historique::create([
+
+            'subject'=>"vous avez supprimé un message ",
+            'type'=>"danger",
+
+
+        ]);
+        return redirect()->route('messages.index')->with("delete","message  a été supprimé.");
+
     }
 }

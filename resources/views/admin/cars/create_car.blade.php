@@ -43,8 +43,8 @@
                                <label for="inputStatus">Type d'immatriculation :</label>
                                <select class="form-control custom-select" name="registration_type">
 
-                                   <option value="Europienne">Tunisienne</option>
-                                   <option value="Etats unis">Etrangere </option>
+                                   <option value="Tunisienne">Tunisienne</option>
+                                   <option value="Etrangere">Etrangere </option>
 
 
 

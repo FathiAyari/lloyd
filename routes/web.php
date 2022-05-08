@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssuranceController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,8 @@ use App\Http\Controllers\DashBoardController;
 Route::get('/',function (){
     return view('index');
 });
+
+Route::resource('home', HomeController::class);
 
 
 Auth::routes();

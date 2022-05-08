@@ -16,6 +16,9 @@
                 @if($message=Session::get('success'))
                     <div class="alert alert-success" role="alert">{{ $message }}</div>
             @endif
+                    @if($message=Session::get('delete'))
+                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                @endif
                 <!-- Default box -->
                 <div class="card  ">
 
@@ -69,16 +72,29 @@
                                     <td class="project-actions text-center">
 
 
+                                        <div class="project-actions justify-content-center d-flex ">
 
 
 
-                                     @if($car->granted==0)
-                                            <a href="{{route('garantie.create',['id' => $car->id])}}" class="btn bg-danger bg-opacity-75"><i class="fa fa-triangle-exclamation"></i> ajouter un garantie</a>
 
-                                        @else
-                                            <button class="btn btn-success"><i class="fa fa-check"></i></button>
-                                        @endif
+                                            @if($car->granted==0)
+                                                <a href="{{route('garantie.create',['id' => $car->id])}}" class="btn bg-danger bg-opacity-75"><i class="fa fa-triangle-exclamation"></i> ajouter un garantie</a>
 
+                                            @else
+                                                <button class="btn btn-success"><i class="fa fa-check"></i></button>
+                                            @endif
+
+                                            <form action="{{ route('cars.destroy',$car) }}"method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <!-- pour des raison de securité -->
+                                                <button type="submit" class="btn btn-danger btn-sm m-1">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Supprimer
+                                                </button>
+                                            </form>
+                                        </div>
 
                                     </td>
                                 </tr>

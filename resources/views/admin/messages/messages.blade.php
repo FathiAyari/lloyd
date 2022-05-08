@@ -32,6 +32,10 @@
                                  Message
 
                                 </th>
+                                <th style="width: 20%"class="text-center">
+                                    date d'envoie
+
+                                </th>
                                 <th style="width: 40%" class="text-center">
                                     Options
 
@@ -44,52 +48,61 @@
 
 
 
-                                <tr>
+                          @foreach($messages as $message)
+                              <tr>
 
 
 
 
-                                    <td class="text-center">
+                                  <td class="text-center">
 
-
-                                    </td>
-
-
-
-
-                                    <td class="text-center">
-
-
-                                    </td>
-
-
-                                    <td class="project_progress text-center" >
-
-
-                                    </td>
-
-                                    <td class="project-actions justify-content-center d-flex ">
+                                      {{$message->name}}
+                                      {{$message->lastname}}
+                                  </td>
 
 
 
 
-                                        <a href="" class="btn btn-primary btn-sm m-1"><i class="fa-solid fa-eye"></i>Voir</a>
+
+                                  <td class="text-center">
+
+                                      {{$message->email}}
+
+                                  </td>
 
 
-                                        <form action=""method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <!-- pour des raison de securité -->
-                                            <button type="submit" class="btn btn-danger btn-sm m-1">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Supprimer
-                                            </button>
-                                        </form>
+                                  <td class="project_progress text-center" >
+
+                                      {{$message->message}}
+                                  </td>
+                                  <td class="project_progress text-center" >
+
+                                      {{$message->created_at}}
+                                  </td>
+
+                                  <td class="project-actions justify-content-center d-flex ">
 
 
-                                    </td>
-                                </tr>
+                                        <button class="btn btn-primary"> <i class="fa fa-comment-dots"></i>repondre</button>
+
+
+
+
+                                      <form action="{{ route('messages.destroy',$message) }}"method="POST">
+                                      @method('DELETE')
+                                      @csrf
+                                      <!-- pour des raison de securité -->
+                                          <button type="submit" class="btn btn-danger btn-sm m-1">
+                                              <i class="fas fa-trash">
+                                              </i>
+                                              Supprimer
+                                          </button>
+                                      </form>
+
+
+                                  </td>
+                              </tr>
+                          @endforeach
 
 
 

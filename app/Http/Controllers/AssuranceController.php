@@ -49,10 +49,11 @@ $optional=$request->optional;
         if(is_null($persons)){
             $persons=[];
         }
-        $debut =Carbon::now();
-        $fin =$debut->addMonths(1);
+
+
+        $test=array("Responsabilité  Civile-Recours Tiers Incendie");
         Assurance::create([
-            'legale'=>["Réesponsabilité  Civile-Recours Tiers Incendie"],
+            'legale'=>$test,
             'optional'=>$optional,
             'persons'=>$persons,
             'car_id'=>$request->car_id,
