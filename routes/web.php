@@ -25,7 +25,7 @@ Route::get('/',function (){
 Route::resource('home', HomeController::class);
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 // route -> name,
